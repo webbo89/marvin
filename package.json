@@ -24,6 +24,7 @@
     "moment-range": "^1.0.9",
     "request": "^2.55.0",
     "require": "^2.4.18"
+    "sifter": "^0.4.1"
   },
   "engines": {
     "node": "0.10.x"
