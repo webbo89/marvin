@@ -21,6 +21,7 @@
     "hubot-youtube": "^0.1.2",
     "lodash": "^3.9.1",
     "moment": "^2.10.3",
+    "moment-range": "^1.0.9",
     "request": "^2.55.0",
     "require": "^2.4.18"
   },
