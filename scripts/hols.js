@@ -13,10 +13,10 @@ module.exports = function(robot) {
         if (!error && response.statusCode === 200) {
           switch(res.match[1]) {
             case "all":
-              res.send all(body, moment(res.match[2]), moment(res.match[3]));
+              res.send(all(body, moment(res.match[2]), moment(res.match[3])));
               break;
             case "next":
-              res.send nextHoliday(body, res.match[2]);
+              res.send(nextHoliday(body, res.match[2]));
               break;
             default:
               return "You what?";
