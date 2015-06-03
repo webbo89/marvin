@@ -7,7 +7,7 @@ module.exports = function(robot) {
     terms = query.split(" ");
     //console.log(terms);
     result = [];
-    return msg.http("http://localhost:3000/data.json").get()(function(err, res, body) {
+    return msg.http("http://localhost/so-resources/js/data.json").get()(function(err, res, body) {
       var index, key, ref, resource, results, value;
       if (JSON.parse(body) != null) {
         ref = JSON.parse(body).resources;
@@ -22,7 +22,7 @@ module.exports = function(robot) {
 
         for (var item in result.items) {
           var response = ref[result.items[item].id];
-          console.log(response.p + ' ' + response.e + ' ' + response.u);
+          return res.reply(response.p + ' ' + response.e + ' ' + response.u);
         }
         /*
         for (index in ref) {
@@ -62,7 +62,7 @@ module.exports = function(robot) {
         }
         return results;*/
       } else {
-        console.log('Cannot find resource!')
+        return res.reply('Cannot find resource!');
       }
 
     });
