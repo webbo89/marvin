@@ -13,10 +13,10 @@ module.exports = function(robot) {
         if (!error && response.statusCode === 200) {
           switch(res.match[1]) {
             case "all":
-              return all(body, moment(res.match[2]), moment(res.match[3]));
+              res.send all(body, moment(res.match[2]), moment(res.match[3]));
               break;
             case "next":
-              nextHoliday(body, res.match[2]);
+              res.send nextHoliday(body, res.match[2]);
               break;
             default:
               return "You what?";
@@ -115,7 +115,7 @@ function sql_script(sorted_dates) {
       console.log('nope');
     }
   }
-  console.log(script);
+  return script;
 }
 
 function nextHoliday(body, region) {
@@ -128,5 +128,5 @@ function nextHoliday(body, region) {
       ary_title.push(event.title);
     }
   });
-  console.log(moment(ary[0]).format("Do MMMM YYYY") + " " + ary_title[0]);
+  return moment(ary[0]).format("Do MMMM YYYY") + " " + ary_title[0];
 }
