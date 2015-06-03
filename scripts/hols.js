@@ -5,13 +5,23 @@ var http = require('http');
 var _ = require('lodash');
 
 module.exports = function(robot) {
-  return robot.respond(/hols (.*) (.*)/i, function(res) {
+  return robot.respond(/hols (.*) (.*) (.*)/i, function(res) {
     request({
         url: hols_url,
         json: true
     }, function (error, response, body) {
         if (!error && response.statusCode === 200) {
-          return all(body, moment(res.match[1]), moment(res.match[2]));
+          switch(res.match[1]) {
+            case "all":
+              return all(body, moment(res.match[2]), moment(res.match[3]));
+              break;
+            case "next":
+              nextHoliday(body, res.match[2]);
+              break;
+            default:
+              return "You what?";
+              break;
+          }
         } else {
           console.log('does not work');
         }
@@ -106,4 +116,17 @@ function sql_script(sorted_dates) {
     }
   }
   console.log(script);
+}
+
+function nextHoliday(body, region) {
+  var today = moment(Date.now()).format('YYYY-MM-DD');
+  var ary = [];
+  var ary_title = [];
+  _.each(body[region].events, function (event) {
+    if (today < event.date) {
+      ary.push(event.date);
+      ary_title.push(event.title);
+    }
+  });
+  console.log(moment(ary[0]).format("Do MMMM YYYY") + " " + ary_title[0]);
 }
