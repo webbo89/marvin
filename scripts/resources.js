@@ -26,6 +26,9 @@ module.exports = function(robot) {
           var response = ref[result.items[item].id];
           full_response += response.p + ' ' + response.e + ' ' + response.u + ' or ';
         }
+        if (full_response ==  "") {
+          full_response = query + " not found"
+        }
         return msg.reply(full_response);
 
         /*
