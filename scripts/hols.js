@@ -11,16 +11,14 @@ module.exports = function(robot) {
         json: true
     }, function (error, response, body) {
         if (!error && response.statusCode === 200) {
-          switch(res.match[1]) {
-            case "all":
-              res.send(all(body, moment(res.match[2]), moment(res.match[3])));
-              break;
-            case "next":
+          if (res.match[1] == "all") {
+            res.send(all(body, moment(res.match[2]), moment(res.match[3])));
+          } else if (res.match[1] == "next") {
+            if (res.match[3] == "please") {
               res.send(nextHoliday(body, res.match[2]));
-              break;
-            default:
-              return "You what?";
-              break;
+            } else {
+              res.send("Say 'please'.");
+            }
           }
         } else {
           console.log('does not work');
@@ -120,13 +118,13 @@ function sql_script(sorted_dates) {
 
 function nextHoliday(body, region) {
   var today = moment(Date.now()).format('YYYY-MM-DD');
-  var ary = [];
+  var ary_date = [];
   var ary_title = [];
   _.each(body[region].events, function (event) {
     if (today < event.date) {
-      ary.push(event.date);
+      ary_date.push(event.date);
       ary_title.push(event.title);
     }
   });
-  return moment(ary[0]).format("Do MMMM YYYY") + " " + ary_title[0];
+  return moment(ary_date[0]).format("Do MMMM YYYY") + " " + ary_title[0];
 }
