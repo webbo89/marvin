@@ -24,6 +24,7 @@ module.exports = function(robot) {
           var response = ref[result.items[item].id];
           console.log(response.p + ' ' + response.e + ' ' + response.u);
         }
+        /*
         for (index in ref) {
           //console.log(ref);
           resource = ref[index];
@@ -59,7 +60,7 @@ module.exports = function(robot) {
           })(result);
           //results.push(console.log(result));
         }
-        return results;
+        return results;*/
       } else {
         console.log('Cannot find resource!')
       }
