@@ -7,7 +7,8 @@ module.exports = function(robot) {
     terms = query.split(" ");
     //console.log(terms);
     result = [];
-    return msg.http("http://localhost:3000/data.json").get()(function(err, res, body) {
+    //return msg.http("http://localhost:3000/data.json").get()(function(err, res, body) {
+    return msg.http("http://localhost/so-resources/js/data.json").get()(function(err, res, body) {
       var index, key, ref, resource, results, value;
       if (JSON.parse(body) != null) {
         ref = JSON.parse(body).resources;
@@ -20,10 +21,13 @@ module.exports = function(robot) {
           limit: 5
         })
 
+        var full_response = "";
         for (var item in result.items) {
           var response = ref[result.items[item].id];
-          console.log(response.p + ' ' + response.e + ' ' + response.u);
+          full_response += response.p + ' ' + response.e + ' ' + response.u + ' or ';
         }
+        return msg.reply(full_response);
+
         /*
         for (index in ref) {
           //console.log(ref);
@@ -62,7 +66,7 @@ module.exports = function(robot) {
         }
         return results;*/
       } else {
-        console.log('Cannot find resource!')
+        return msg.reply('Cannot find resource!');
       }
 
     });
