@@ -32,7 +32,7 @@ module.exports = function(robot) {
             response = "http://www.quickmeme.com/img/ce/cedf6e36ec74aa18600ff0f0bcb06692f0e2b6fdbcb80372b9ec67222095343c.jpg"
         }
         if (Math.floor(Math.random()*100) == 50) {
-            response = "http://cf.chucklesnetwork.com/items/7/6/9/3/4/original/yo-dawg-i-heard-you-like-printing-so-i-put-gel-pump-and-cell-pum.jpg"
+            response = "http://www.quickmeme.com/img/64/64ac4cf36b3c48730167df441c46a8b4fb0a882050b7fa4764ebda3b8b1ec935.jpg"
         }
         return msg.reply(response);
     });
