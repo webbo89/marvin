@@ -10,12 +10,7 @@ module.exports = function(robot) {
 
     global_print_spool = [];
 
-    robot.router.post('/hubot/notify/:room', function(req, res) {
-        var message, room;
-        console.log(req.body)
-        room = req.params.room;
-        message = req.body.message;
-        robot.messageRoom(room, message);
+    robot.router.post('/hubot/print/latest', function(req, res) {
         var ready_for_print = []
         for (var i = 0, len = global_print_spool.length; i < len; i++) {
             ready_for_print.push(global_print_spool.pop());
