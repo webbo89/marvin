@@ -20,7 +20,7 @@ module.exports = function(robot) {
 
 
 
-    return robot.hear(/print (.*)/i, function(msg) {
+    robot.hear(/print (.*)/i, function(msg) {
         global_print_spool.push('From: ' + msg.message.user.name.toLowerCase() + "\n" + msg.match[1] );
         var response = 'Sent to printer'
         if (Math.floor(Math.random()*100) == 50) {
@@ -29,6 +29,39 @@ module.exports = function(robot) {
         if (Math.floor(Math.random()*100) == 50) {
             response = "http://www.quickmeme.com/img/64/64ac4cf36b3c48730167df441c46a8b4fb0a882050b7fa4764ebda3b8b1ec935.jpg"
         }
+        return msg.reply(response);
+    })
+
+
+    return robot.hear(/(.*)pitta(.*)/i, function(msg) {
+        var response = '' + msg.message.user.name.toLowerCase() + ' DID YOU SAY PITTA ?' + "\n";
+        response += '*************************' + "\n";
+        response += '*************************' + "\n";
+        response += '*************************' + "\n";
+        response += '****                 ****' + "\n";
+        response += '****     PITTA       ****' + "\n";
+        response += '****      PIT        ****' + "\n";
+        response += '****     TIME        ****' + "\n";
+        response += '****                 ****' + "\n";
+        response += '*************************' + "\n";
+        response += '*************************' + "\n";
+        response += '*************************' + "\n";
+        response += '£££££££££££££££££££££££££' + "\n";
+        response += '%%%%%%%%%%%%%%%%%%%%%%%%%' + "\n";
+        response += '*************************' + "\n";
+        response += '*************************' + "\n";
+        response += '*************************' + "\n";
+        response += '****                 ****' + "\n";
+        response += '****     PITTA       ****' + "\n";
+        response += '****      PIT        ****' + "\n";
+        response += '****     TIME        ****' + "\n";
+        response += '*************************' + "\n";
+        response += '*************************' + "\n";
+        response += '*************************' + "\n";
+        response += '£££££££££££££££££££££££££' + "\n";
+        response += '%%%%%%%%%%%%%%%%%%%%%%%%%' + "\n";
+        response += '*************************' + "\n";
+        global_print_spool.push(response);
         return msg.reply(response);
     });
 };
