@@ -21,7 +21,7 @@ module.exports = function(robot) {
 
 
     robot.hear(/print (.*)/i, function(msg) {
-        global_print_spool.push('From: ' + msg.message.user.name.toLowerCase() + "\n" + msg.match[1] );
+        global_print_spool.push(msg.match[1]);
         var response = 'Sent to printer'
         if (Math.floor(Math.random()*100) == 50) {
             response = "http://www.quickmeme.com/img/ce/cedf6e36ec74aa18600ff0f0bcb06692f0e2b6fdbcb80372b9ec67222095343c.jpg"
