@@ -63,5 +63,10 @@ module.exports = function(robot) {
         response += '*************************' + "\n";
         global_print_spool.push(response);
         return msg.reply(response);
+    })
+
+    return robot.hear(/(.*)rollercoaster(.*)/i, function(msg) {
+       var response = "http://img2-ak.lst.fm/i/u/arO/c112f70cafeb40669198dd0ec5ea90d4";
+       return msg.reply(response);
     });
 };
