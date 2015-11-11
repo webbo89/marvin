@@ -33,13 +33,13 @@ module.exports = function(robot) {
     })
 
 
-    return robot.hear(/(.*)pitta(.*)/i, function(msg) {
-        var response = '' + msg.message.user.name.toLowerCase() + ' DID YOU SAY PITTA ?' + "\n";
+    return robot.hear(/(.*)pita(.*)/i, function(msg) {
+        var response = '' + msg.message.user.name.toLowerCase() + ' DID YOU SAY PITA ?' + "\n";
         response += '*************************' + "\n";
         response += '*************************' + "\n";
         response += '*************************' + "\n";
         response += '****                 ****' + "\n";
-        response += '****     PITTA       ****' + "\n";
+        response += '****     PITA       ****' + "\n";
         response += '****      PIT        ****' + "\n";
         response += '****     TIME        ****' + "\n";
         response += '****                 ****' + "\n";
@@ -52,7 +52,7 @@ module.exports = function(robot) {
         response += '*************************' + "\n";
         response += '*************************' + "\n";
         response += '****                 ****' + "\n";
-        response += '****     PITTA       ****' + "\n";
+        response += '****     PITA       ****' + "\n";
         response += '****      PIT        ****' + "\n";
         response += '****     TIME        ****' + "\n";
         response += '*************************' + "\n";
