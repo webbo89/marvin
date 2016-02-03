@@ -16,7 +16,7 @@ module.exports = function(robot) {
             ready_for_print.push(global_print_spool.pop());
         }
         return res.send(ready_for_print);
-    })
+    });
 
 
 
@@ -30,7 +30,12 @@ module.exports = function(robot) {
             response = "http://www.quickmeme.com/img/64/64ac4cf36b3c48730167df441c46a8b4fb0a882050b7fa4764ebda3b8b1ec935.jpg"
         }
         return msg.reply(response);
-    })
+    });
+
+    robot.hear(/(.*)rollercoaster(.*)/i, function(msg) {
+      var response = "http://img2-ak.lst.fm/i/u/arO/c112f70cafeb40669198dd0ec5ea90d4";
+      return msg.reply(response);
+    });
 
 
     return robot.hear(/(.*)pita(.*)/i, function(msg) {
@@ -63,10 +68,5 @@ module.exports = function(robot) {
         response += '*************************' + "\n";
         global_print_spool.push(response);
         return msg.reply(response);
-    })
-
-    return robot.hear(/(.*)rollercoaster(.*)/i, function(msg) {
-       var response = "http://img2-ak.lst.fm/i/u/arO/c112f70cafeb40669198dd0ec5ea90d4";
-       return msg.reply(response);
     });
 };
