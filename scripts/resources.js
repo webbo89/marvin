@@ -67,7 +67,7 @@ module.exports = function(robot) {
       var result_count =  result.length
       for (var i = (result_count-1); i > Math.max(-1, result.length-6); i--) {
           var response = ref[result[i].id];
-        full_response += response.p + ' ' + response.e + ' ' + response.u + result[i].score + "\n";
+        full_response += response.p + ' ' + response.e + ' ' + response.u + "\n";
       }
 
       if (full_response ==  "") {
